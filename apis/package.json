@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@grpc/grpc-js": "^1.10.10",
+    "@improbable-eng/grpc-web": "^0.15.0",
+    "@protobuf-ts/plugin": "^2.9.4",
+    "@protobuf-ts/runtime": "^2.9.4",
+    "browser-headers": "^0.4.1",
+    "ts-proto": "^1.181.0"
+  },
+  "devDependencies": {
+    "protoc-gen-grpc-web": "^1.5.0"
+  }
+}
