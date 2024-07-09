@@ -7,34 +7,32 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 # Define the root directory for Protobuf files
-PROTO_ROOT_DIR="protobufs"
-
-# Function to clear existing generated directories
-clear_gen_dirs() {
-  find ${PROTO_ROOT_DIR} -type d -name "gen" | while read -r gen_dir; do
-    echo -e "${YELLOW}Removing existing directory ${gen_dir}${NC}"
-    rm -rf "$gen_dir"
-  done
-}
+PROTO_ROOT_DIR="protos"
+PROTO_STUBS_DIR="proto_stubs"
 
 # Clear existing generated directories once at the beginning
-clear_gen_dirs
+rm -rf PROTO_STUBS_DIR
 
 # Recursively find all .proto files and generate code
 find ${PROTO_ROOT_DIR} -name "*.proto" | while read -r proto_file; do
   # Print the proto file being processed
   echo -e "${GREEN}Processing $proto_file...${NC}"
 
-  # Get the directory of the proto file
+  # Get the directory and file name of the proto file
   proto_dir=$(dirname "$proto_file")
+  proto_filename=$(basename "$proto_file")
+
+  # Extract service and version from the directory path
+  service_name=$(basename "$(dirname "$(dirname "$proto_dir")")")
+  version_name=$(basename "$(dirname "$proto_dir")")
 
   # Define the output directories for Go and TypeScript code
-  GO_OUT_DIR="${proto_dir}/gen/go"
-  TS_OUT_DIR="${proto_dir}/gen/typescript"
+  GO_OUT_DIR="proto_stubs/${service_name}/${version_name}/go"
+  TS_OUT_DIR="proto_stubs/${service_name}/${version_name}/typescript"
 
-  # Create output directories if they do not exist
-  mkdir -p ${GO_OUT_DIR}
-  mkdir -p ${TS_OUT_DIR}
+  # Create the output directories
+  mkdir -p "${GO_OUT_DIR}"
+  mkdir -p "${TS_OUT_DIR}"
 
   # Generate Go code
   protoc --proto_path=${proto_dir} --go_out=${GO_OUT_DIR} --go_opt=paths=source_relative \
