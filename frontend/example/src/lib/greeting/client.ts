@@ -2,8 +2,8 @@ import type { FinishedUnaryCall } from '@protobuf-ts/runtime-rpc';
 import type {
 	MyMessageRequest,
 	MyMessageResponse
-} from '../../../../apis/proto_stubs/example_service/example/typescript/example_api_pb';
-import { MyServiceClient } from '../../../../apis/proto_stubs/example_service/example/typescript/example_api_pb.client';
+} from '../../../../../apis/proto_stubs/example_service/example/typescript/example_api_pb';
+import { MyServiceClient } from '../../../../../apis/proto_stubs/example_service/example/typescript/example_api_pb.client';
 import { GrpcWebFetchTransport } from '@protobuf-ts/grpcweb-transport';
 
 const hostname = 'http://localhost:8080';
