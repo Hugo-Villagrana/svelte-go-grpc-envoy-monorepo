@@ -20,15 +20,11 @@ find ${PROTO_ROOT_DIR} -name "*.proto" | while read -r proto_file; do
 
   # Get the directory and file name of the proto file
   proto_dir=$(dirname "$proto_file")
-  proto_filename=$(basename "$proto_file")
-
-  # Extract service and version from the directory path
-  service_name=$(basename "$(dirname "$(dirname "$proto_dir")")")
-  version_name=$(basename "$(dirname "$proto_dir")")
+  proto_out="${proto_dir#protos/}"
 
   # Define the output directories for Go and TypeScript code
-  GO_OUT_DIR="proto_stubs/${service_name}/${version_name}/go"
-  TS_OUT_DIR="proto_stubs/${service_name}/${version_name}/typescript"
+  GO_OUT_DIR="proto_stubs/${proto_out}/go"
+  TS_OUT_DIR="proto_stubs/${proto_out}/typescript"
 
   # Create the output directories
   mkdir -p "${GO_OUT_DIR}"
