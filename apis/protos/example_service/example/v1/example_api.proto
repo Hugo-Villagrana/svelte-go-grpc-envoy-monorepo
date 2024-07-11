@@ -3,7 +3,7 @@ syntax = "proto3";
 package example_service.example.v1;
 
 // Specify the Go package for the generated code.
-option go_package = "github.com/Hugo-Villagrana/svelte-go-rpc-envoy-monorepo/protobufs/example_service/example/v1;example";
+option go_package = "github.com/Hugo-Villagrana/svelte-go-grpc-envoy-monorepo/protobufs/example_service/example/v1;example";
 
 // The request message containing the user's ID.
 message MyMessageRequest { string id = 1; }
