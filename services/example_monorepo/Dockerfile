@@ -29,7 +29,7 @@ RUN rm -rf /root/.ssh
 COPY . .
 
 # Build the Go application
-RUN go build -o wealthsnap ./services/wealthsnap/cmd/wealthsnap
+RUN go build -o wealthsnap ./services/example_monorepo/cmd/example_monorepo
 
 # Stage 2: Final Stage
 FROM alpine:latest
@@ -38,11 +38,11 @@ FROM alpine:latest
 WORKDIR /app
 
 # Copy the built Go application from the builder stage
-COPY --from=builder /app/wealthsnap /app/wealthsnap
+COPY --from=builder /app/example_monorepo /app/example_monorepo
 
 # Expose the port that the service will run on
 EXPOSE 50051
 
 # Command to run the executable
-CMD ["./wealthsnap"]
+CMD ["./example_monorepo"]
 
