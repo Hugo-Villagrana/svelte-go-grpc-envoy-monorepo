@@ -29,7 +29,7 @@ RUN rm -rf /root/.ssh
 COPY . .
 
 # Build the Go application
-RUN go build -o wealthsnap ./services/example_monorepo/cmd/example_monorepo
+RUN go build -o example_monorepo ./services/example_monorepo/cmd/example_monorepo
 
 # Stage 2: Final Stage
 FROM alpine:latest
