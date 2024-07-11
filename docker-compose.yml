@@ -9,10 +9,10 @@ services:
     networks:
       - mynetwork
     depends_on:
-      - wealthsnap
+      - example_monorepo
 
-  wealthsnap:
-    image: docker.io/library/my-wealthsnap
+  example_monorepo:
+    image: docker.io/library/example_monorepo
     ports:
       - "50051:50051"
     networks:
