@@ -2,11 +2,11 @@ import type { FinishedUnaryCall } from '@protobuf-ts/runtime-rpc';
 import type {
 	MyMessageRequest,
 	MyMessageResponse
-} from '../../../../../apis/proto_stubs/example_service/example/typescript/example_api_pb';
-import { MyServiceClient } from '../../../../../apis/proto_stubs/example_service/example/typescript/example_api_pb.client';
+} from '../../../../../apis/proto_stubs/example_service/example/v1/typescript/example_api_pb';
+import { MyServiceClient } from '../../../../../apis/proto_stubs/example_service/example/v1/typescript/example_api_pb.client';
 import { GrpcWebFetchTransport } from '@protobuf-ts/grpcweb-transport';
 
-const hostname = 'http://localhost:8080';
+const hostname = 'http://0.0.0.0:8080';
 let transport = new GrpcWebFetchTransport({
 	baseUrl: hostname,
 	format: 'binary'
